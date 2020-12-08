@@ -15,7 +15,7 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/marsmission")
 def index():
 
     # Find one record of data from the mongo database
-    onerecord = mongo.db.collection.find_one()
+    info = mongo.db.missiontools.find_one()
 
     # Return template and data
     return render_template("index.html", info=info)
@@ -23,15 +23,11 @@ def index():
 # Route that will trigger the scrape function
 @app.route("/scrape")
 def scrape():
-    # Feature Scrape
-    feature_title = mongo.db.feature_title
-    
-
-    # Run the scrape function
     # Update the Mongo database using update and upsert=True
-    info = mongo.db.info
-    info = scrape_mars.scrapemars()
-    mongo.db.info.update({}, info_data, upsert=True)
+    info = mongo.db.missiontools
+    featuretext = scrape_mars.scrapemars()
+    print(featuretext)
+    mongo.db.missiontools.update({}, featuretext, upsert=True)
     return redirect("/", code=302)
     #print(info)
     

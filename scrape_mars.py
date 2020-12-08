@@ -10,6 +10,39 @@ from splinter import Browser
 def scrapemars():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
+    
+    # Feature Text Scrape
+    url = 'https://mars.nasa.gov/news/'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    title = soup.find('div', class_='content_title').get_text()
+    paragraph = soup.find('div', class_="rollover_description_inner").get_text()
+    featuretext = {}
+    featuretext["feature_title"]=title
+    featuretext["feature_paragraph"]=paragraph
+    browser.back()
+    
+    # Table Scrape
+    url2 = 'https://space-facts.com/mars/'
+    tables = pd.read_html(url2)
+    df = tables[0]
+    # Add either column name here and/or set index to eliminate the left index numbers
+    featuretext["feature_table"]=df.to_html()
+    browser.back()
+
+    # Feature Image Scrape
+    url3 = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+    browser.visit(url3)
+    html = browser.html
+    soup3 = BeautifulSoup(html, 'html.parser')
+    images=soup3.select_one('article', class_="button fancybox").get("style")[23:75]
+    imagesurl=f'https://www.jpl.nasa.gov{images}'
+    featuretext["feature_image"]=imagesurl
+    browser.back()
+
+    # Hemisphere Scape
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
     url4 = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url4)
     links = browser.find_by_css('a.product-item h3')
@@ -33,9 +66,9 @@ def scrapemars():
         
         # Finally, we navigate backwards
         browser.back()
-     
-        #browser.quit()
 
-    print(hemisphere_image_url[0]["img_url"])
+    # print(hemisphere_image_url[0]["img_url"])
+    featuretext["hemisphere_list"]=hemisphere_image_url
 
-    return hemisphere_image_url
+    browser.quit()
+    return featuretext
