@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Mission to Mars Project Page</title>
+  <title>Mars Project Page</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -30,10 +30,10 @@
           </div>
     
           <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
         <div class="box header">Latest Mars News</div>
         <div class="box mainbody">{{info.feature_title }}</div>
-        <div class="box mainbody">{{info.feature_paragraph}} zzz</div>
+        <div class="box mainbody">{{info.feature_paragraph}}</div>
         </div>
     </div>
 
@@ -42,19 +42,18 @@
       <div class="col-md-4">
         <div class="box mainbody">Featured Mars Image</div>
         <div class="box mainbody">
-          <!-- <img id="bio-image" src="{{info.feature_image}}" alt="Missing Carousel Image"> -->
+          <img id="bio-image" src="{{info.feature_image}}" height = 450 width = 450 alt="Missing Carousel Image">
           </div>
       </div>
 
       <div class="col-md-4">
-        <h3>Mars Facts</h3>
-        {{info.feature_table}}
+        <div class="box mainbody">Mars Facts</div>
+        {{info.feature_table | safe}}
       </div>
       
     </div>
-    
-    
-            <div class="row">
+      
+    <div class="row">
       <div class="col-md-12">
         <div class="box header">Mars Hemispheres</div>
       </div>
@@ -62,35 +61,35 @@
 
     
     <div class="row">
-        <div class="col-md-6">
-          <div class = "box mainbody">Hemi One Title Scrape Here</div>
-          <!-- <div class="box mainbody"><img src="{}" alt="Sloth"></div> -->
-        <div class="col-md-6">
-          <div class = "box mainbody">Hemi 2 Title Scrape Here</div>
-          <div class="box mainbody"><a href="/humidity.html"><img id="bio-image" src="Resources\assets\images\Fig2.png" width = 520 height = 440 alt="Missing Hemisphere 2 Image"></div>
-        </a></div>
-        
-      </div>
+        <div class="col-md-5">
+          <div class = "box mainbody">{{info.hemisphere_list[0].title}}</div>
+          <img id="bio-image" src="{{info.hemisphere_list[0].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
+        </div>
+        <div class="col-md-7">
+          <div class = "box mainbody">{{info.hemisphere_list[1].title}}</div>
+          <img id="bio-image" src="{{info.hemisphere_list[1].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
+        </div>
+    </div>
   
-      <div class="row">
-          <div class="col-md-6">
+    <div class="row">
+         <div class="col-md-5">
             <div class="box title"></div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-7">
             <div class="box title"></div>
           </div>
         </div>
   
     <div class="row">
-          <div class="col-md-6">
-          <div class = "box mainbody">Hemi Three Title Scrape Here</div>
-          <div class="box mainbody"><a href="/cloudiness.html"><img id="bio-image" src="Resources\assets\images\Fig3.png" width = 520 height = 440 alt="Missing Hemisphere 3 Image"></div>
-        </a></div>
-          <div class="col-md-6">
-            <div class = "box mainbody">Hemi 4 Title Scrape Here</div>
-            <div class="box mainbody"><a href="/windspeed.html"><img id="bio-image" src="Resources\assets\images\Fig4.png" width = 520 height = 440 alt="Missing Hemisphere 4 Image"></div>
-          </a></div>
+        <div class="col-md-5">
+          <div class = "box mainbody">{{info.hemisphere_list[2].title}}</div>
+          <img id="bio-image" src="{{info.hemisphere_list[2].img_url}}" height = 240 width = 240 alt="Missing Hemisphere Three Image">
         </div>
+        <div class="col-md-7">
+          <div class = "box mainbody">{{info.hemisphere_list[3].title}}</div>
+          <img id="bio-image" src="{{info.hemisphere_list[0].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
+        </div>
+      </div>
   
     <div class="row">
         <div class="col-md-12">

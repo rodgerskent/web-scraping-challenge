@@ -26,6 +26,8 @@ def scrapemars():
     url2 = 'https://space-facts.com/mars/'
     tables = pd.read_html(url2)
     df = tables[0]
+    df = df.rename(columns={0: " ", 1: "Mars"})
+    df = df.set_index(" ")
     # Add either column name here and/or set index to eliminate the left index numbers
     featuretext["feature_table"]=df.to_html()
     browser.back()
