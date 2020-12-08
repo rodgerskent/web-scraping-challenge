@@ -23,6 +23,7 @@ Step One: Four “Scrapes” from the following:
     a.	  The USGS Astrogeology site at (https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars) is referenced to obtain high resolution images for each of Mar's hemispheres.
     b.	  A script was created that clicks each of the links to the hemispheres in order to find the image url to the full resolution image.
     c.	  Both an image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name are stored as a list of dictionaries in                MongoDB to be referenced later.
+
 Step Two: Deliver the scrapped information via an HTML page
     1.	MongoDB and Flask templating were used to create a new HTML page that displays all of the information that was scraped from the URLs above.
     2.	Jupyter notebook was utilized to plan and test the Python script called `scrape_mars.py`. 
