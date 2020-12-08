@@ -12,11 +12,16 @@ def scrapemars():
     browser = Browser('chrome', **executable_path, headless=False)
     
     # Feature Text Scrape
-    url = 'https://mars.nasa.gov/news/'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    title = soup.find('div', class_='content_title').get_text()
-    paragraph = soup.find('div', class_="rollover_description_inner").get_text()
+    url1 = 'https://mars.nasa.gov/news/'
+    response = requests.get(url1)
+    browser.visit(url1)
+    browser.is_element_present_by_css("ul.item_list li.slide", wait_time=1)
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    slide_elem = soup.select_one('ul.item_list li.slide')
+    title = slide_elem.find('div', class_='content_title').get_text()
+    paragraph = slide_elem.find('div', class_="rollover_description_inner").get_text()
     featuretext = {}
     featuretext["feature_title"]=title
     featuretext["feature_paragraph"]=paragraph

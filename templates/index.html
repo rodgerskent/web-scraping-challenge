@@ -6,7 +6,56 @@
   <meta charset="UTF-8">
   <title>Mars Project Page</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+  <style>
+.box {
+  min-height: 50px;
+  padding: 2px;
+  margin: 2px;
+  margin-left: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.border {
+  background: rgb(219, 81, 26);
+  min-height: 10px;
+  font-size: 9px;
+}
+
+.text-center {
+    background: rgb(238, 233, 231);
+    min-height: 10px;
+}
+
+.header {
+  background: rgb(238, 233, 231);
+  font-size: 20px;
+  color: rgb(15, 9, 2)
+}
+.mainbody {
+  font-size: 16px;
+  color: rgb(15, 9, 2)
+}
+.para {
+  font-size: 12px;
+  color: rgb(15, 9, 2)
+}
+.title {
+  background: rgb(243, 247, 248);
+  min-height: 10px;
+  font-size: 16px;
+  color: rgb(19, 86, 138)
+  }
+
+#bio-image{
+  width: 90%;
+  height: 90%;
+}
+  </style>
+
+
 </head>
 
 <body>
@@ -23,30 +72,30 @@
           <p><a class="btn btn-primary btn-md" href="/scrape" role="button">Select for Update!</a></p>
         </div>
     
-        <div class="row">
-            <div class="col-md-12">
-              <div class="box border"></div>
-            </div>
+      <div class="row">
+          <div class="col-md-12">
+            <div class="box border"></div>
           </div>
+        </div>
     
-          <div class="row">
-      <div class="col-md-8">
+      <div class="row">
+      <div class="col-md-12">
         <div class="box header">Latest Mars News</div>
         <div class="box mainbody">{{info.feature_title }}</div>
-        <div class="box mainbody">{{info.feature_paragraph}}</div>
+        <div class="box para">{{info.feature_paragraph}}</div>
         </div>
     </div>
 
     <div class="row">
 
-      <div class="col-md-4">
+      <div class="col-md-7">
         <div class="box mainbody">Featured Mars Image</div>
         <div class="box mainbody">
-          <img id="bio-image" src="{{info.feature_image}}" height = 450 width = 450 alt="Missing Carousel Image">
+          <img id="bio-image" src="{{info.feature_image}}" height = 450 width = 650 alt="Missing Carousel Image">
           </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="box mainbody">Mars Facts</div>
         {{info.feature_table | safe}}
       </div>
@@ -60,36 +109,36 @@
     </div>
 
     
-    <div class="row">
-        <div class="col-md-5">
-          <div class = "box mainbody">{{info.hemisphere_list[0].title}}</div>
-          <img id="bio-image" src="{{info.hemisphere_list[0].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
-        </div>
-        <div class="col-md-7">
-          <div class = "box mainbody">{{info.hemisphere_list[1].title}}</div>
-          <img id="bio-image" src="{{info.hemisphere_list[1].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
-        </div>
-    </div>
-  
-    <div class="row">
-         <div class="col-md-5">
-            <div class="box title"></div>
+      <div class="row">
+          <div class="col-md-6">
+            <div class = "box mainbody">{{info.hemisphere_list[0].title}}</div>
+            <img id="bio-image" src="{{info.hemisphere_list[0].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
           </div>
-          <div class="col-md-7">
-            <div class="box title"></div>
+          <div class="col-md-6">
+            <div class = "box mainbody">{{info.hemisphere_list[1].title}}</div>
+            <img id="bio-image" src="{{info.hemisphere_list[1].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
           </div>
-        </div>
-  
-    <div class="row">
-        <div class="col-md-5">
-          <div class = "box mainbody">{{info.hemisphere_list[2].title}}</div>
-          <img id="bio-image" src="{{info.hemisphere_list[2].img_url}}" height = 240 width = 240 alt="Missing Hemisphere Three Image">
-        </div>
-        <div class="col-md-7">
-          <div class = "box mainbody">{{info.hemisphere_list[3].title}}</div>
-          <img id="bio-image" src="{{info.hemisphere_list[0].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
-        </div>
       </div>
+  
+    <!-- <div class="row">
+         <div class="col-md-6">
+            <div class="box title"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="box title"></div>
+          </div>
+        </div> -->
+  
+      <div class="row">
+          <div class="col-md-6">
+            <div class = "box mainbody">{{info.hemisphere_list[2].title}}</div>
+            <img id="bio-image" src="{{info.hemisphere_list[2].img_url}}" height = 240 width = 240 alt="Missing Hemisphere Three Image">
+          </div>
+          <div class="col-md-6">
+            <div class = "box mainbody">{{info.hemisphere_list[3].title}}</div>
+            <img id="bio-image" src="{{info.hemisphere_list[0].img_url}}" height = 240 width = 240 alt="Missing Hemisphere One Image">
+          </div>
+        </div>
   
     <div class="row">
         <div class="col-md-12">
