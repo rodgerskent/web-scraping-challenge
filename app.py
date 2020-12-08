@@ -13,10 +13,8 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/marsmission")
 # Route to render index.html template using data from Mongo
 @app.route("/")
 def index():
-
     # Find one record of data from the mongo database
     info = mongo.db.missiontools.find_one()
-
     # Return template and data
     return render_template("index.html", info=info)
 
@@ -29,10 +27,7 @@ def scrape():
     print(featuretext)
     mongo.db.missiontools.update({}, featuretext, upsert=True)
     return redirect("/", code=302)
-    #print(info)
-    
-#<a href=info[0]["img_url"]a>
-
+ 
 if __name__ == "__main__":
     app.run(debug=True)
 
